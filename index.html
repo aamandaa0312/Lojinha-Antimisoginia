@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Lojinha da Inconveniência</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./assects/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"  />
+</head>
+
+<body>
+    <div class="top-bar">
+        <div class="social-icons">
+          <a href="https://facebook.com" target="_blank"><i class="bi bi-facebook"></i></a>
+          <a href="https://instagram.com" target="_blank"><i class="bi bi-instagram"></i></a>
+          <a href="https://youtube.com" target="_blank"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+    
+      <!-- Barra inferior -->
+      <div class="bottom-bar">
+        <div class="menu-icon">
+          <i class="bi bi-list"></i>
+        </div>
+        
+        <div class="title">
+          Lojinha da Inconveniência
+        </div>
+        <div class="logo">
+            <img src="assects/logo1.png" alt="Logo Juventudes Anti Misoginia">
+          </div>
+      </div>
+    </header>
+    
+    <main>
+        <section class="intro">
+            <h2>Bem-vindo à Lojinha da Inconveniência</h2>
+            <p>
+                Aqui você encontra produtos do dia a dia com um propósito especial: apoiar a luta contra a misoginia.
+                Cada compra é um gesto de consciência e transformação social.
+            </p>
+            <div class=" xxcbanner">
+                <img src="assects/image.png" alt="" />
+            </div>
+        </section>
+    
+        <section>
+            <h2>Produtos</h2>
+            <div class="grid" id="productGrid">
+            </div>
+        </section>
+    </main>
+    
+
+    <!-- Carrinho simplificado -->
+    <div class="cart" id="cartBox">
+        <div><strong>Carrinho</strong></div>
+        <div id="cartItems" style="min-width:220px;min-height:40px;margin:.6rem 0;color:var(--muted)">(vazio)</div>
+        <div style="display:flex;gap:.5rem;align-items:center">
+            <div class="price" id="cartTotal">R$ 0,00</div>
+            <button class="checkoutBtn" id="checkoutBtn">Finalizar Compra</button>
+        </div>
+        <div class="note">A lógica final da nossa lojinha interrompe a compra para reflexão.</div>
+    </div>
+
+    <!-- Modal de interrupção/conscientização -->
+    <div class="overlay" id="conscienceOverlay" aria-hidden="true">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <h2 id="modalTitle">Antes de concluir — uma reflexão</h2>
+            <p>Sua Compra Não Será Concluída.
+            </p>
+            <ul>
+                <li>Esta loja não vende produtos, ela vende uma reflexão.
+                    Assim como o machismo é inconveniente e pode estar presente
+                    em detalhes do nosso dia a dia, a compra nesta loja é
+                    interrompida para te fazer pensar.</li>
+                <li> O consumo consciente é importante, mas a conscientização
+                    sobre o machismo é urgente. Obrigada por sua atenção.</li>
+                
+            </ul>
+            <div class="actions">
+                <button class="btn" id="shareSocial">Compartilhar</button>
+                <button class="btn" id="seeNGOs">Ver iniciativas locais</button>
+                <button class="btn secondary" id="closeModal">Cancelar Compra</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <h5>Projeto Antimisoginia</h5>
+                    <p>Plataforma dedicada à divulgação do projeto Antimisoginia do SESI-SP.</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Links Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light text-decoration-none">Início</a></li>
+                        
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Conecte-se</h5>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/sesisp/?locale=pt_BR"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/sesisp/"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.youtube.com/SesiSaoPauloOficial"><i class="bi bi-youtube"></i></a>
+                        <a href="https://br.linkedin.com/company/sesisp"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Desenvolvedores</h5>
+                    <ul class="list-unstyled">
+                        <li>Adriana Rodrigues de Araujo</li>
+                        <li>Amanda Rodrigues de Araujo</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="text-center py-3">
+                <p>&copy; 2025 SESI-SP - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const products = [
+            { id: 1, title: "Água", price: 2.9, img: "assects/agua.png" },
+            { id: 2, title: "Álcool", price: 19.9, img: "assects/alcool.png" },
+            { id: 3, title: "Amaciante", price: 9.9, img: "assects/amaciante.png" },
+            { id: 4, title: "Aromatizante", price: 12.9, img: "assects/aromatizante.png" },
+            { id: 5, title: "azeite", price: 7.9, img: "assects/azeite.png" },
+            { id: 6, title: "Bombom", price: 15.9, img: "assects/bombom.png" },
+            { id: 7, title: "Desengordurante", price: 21.9, img: "assects/desengordurante.png" },
+            { id: 8, title: "iorgute", price: 15.9, img: "assects/iorgute.png" },
+            { id: 9, title: "Leite Fermentado", price: 5.9, img: "assects/leite fermentado.png" },
+            { id: 10, title: "Manteiga", price: 13.9, img: "assects/manteiga.png" },
+            { id: 11, title: "Multiuso", price: 19.9, img: "assects/multiuso.png" },
+            { id: 12, title: "Pasta de Dente", price: 14.9, img: "assects/pasta de dente.png" },
+            { id: 13, title: "Perfume", price: 145.9, img: "assects/perfume.png" },
+            { id: 14, title: "Protetor Solar", price: 38.9, img: "assects/protetor solar.png" },
+            { id: 15, title: "Refrigerante", price: 6.9, img: "assects/refri.png" }
+        ];
+
+        // Estado do carrinho (local apenas)
+        const cart = { items: [] };
+
+        // Renderiza produtos
+        const grid = document.getElementById('productGrid');
+        function renderProducts() {
+            grid.innerHTML = '';
+            products.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+          <img src="${p.img}" alt="${p.title}" onerror="this.src='assects/placeholder.png'"/>
+          <div><strong>${p.title}</strong></div>
+          <div class="price">R$ ${p.price.toFixed(2)}</div>
+          <button class="addBtn" data-id="${p.id}">Adicionar ao carrinho</button>
+        `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Adicionar produto ao carrinho
+        function addToCart(productId) {
+            const prod = products.find(x => x.id === productId);
+            if (!prod) return;
+            cart.items.push(prod);
+            updateCartUI();
+        }
+
+        // Atualiza UI do carrinho
+        function updateCartUI() {
+            const itemsBox = document.getElementById('cartItems');
+            if (cart.items.length === 0) {
+                itemsBox.textContent = '(vazio)';
+            } else {
+                itemsBox.innerHTML = cart.items.map((it, i) => `<div>${i + 1}. ${it.title} — R$ ${it.price.toFixed(2)}</div>`).join('');
+            }
+            const total = cart.items.reduce((s, x) => s + x.price, 0);
+            document.getElementById('cartTotal').textContent = 'R$ ' + total.toFixed(2);
+        }
+
+        // Intercepta o checkout: mostra modal de conscientização
+        const overlay = document.getElementById('conscienceOverlay');
+        function interceptCheckout() {
+            if (cart.items.length === 0) { alert('Seu carrinho está vazio.'); return; }
+            overlay.classList.add('show');
+            overlay.setAttribute('aria-hidden', 'false');
+        }
+
+        // Ações do modal
+        document.getElementById('shareSocial').addEventListener('click', () => {
+            window.open('https://www.instagram.com/?url=https://seudominio.com', '_blank');
+        });
+
+        document.getElementById('seeNGOs').addEventListener('click', () => {
+            window.open('/ongs.html', '_blank');
+        });
+
+        document.getElementById('closeModal').addEventListener('click', () => {
+            overlay.classList.remove('show');
+            overlay.setAttribute('aria-hidden', 'true');
+        });
+
+        // Event delegation para botões adicionar
+        document.addEventListener('click', (e) => {
+            if (e.target.matches('.addBtn')) {
+                const id = Number(e.target.dataset.id);
+                addToCart(id);
+            }
+        });
+
+        // Botão finalizar
+        document.getElementById('checkoutBtn').addEventListener('click', interceptCheckout);
+
+        // Render inicial
+        renderProducts();
+        updateCartUI();
+    </script>
+</body>
+
+</html>
+
