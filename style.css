@@ -490,19 +490,228 @@ footer .text-center p {
   user-select: none;
   pointer-events: none;
 }
+.menu-bar {
 
-/* Responsividade para telas pequenas */
+  position: relative; 
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  float: right;
+  padding: 10px;
+  color: #333; 
+  transition: color 0.3s ease; 
+}
+
+.menu-btn:hover {
+  color: #007bff; 
+}
+
+.dropdown-menu {
+  display: none; 
+  position: fixed; 
+  top: 60px;
+  right: 20px; 
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); 
+  max-width: 250px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1); 
+  border-radius: 12px; 
+  z-index: 1000; 
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden; 
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-menu li {
+  padding: 0; 
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05); 
+  transition: background-color 0.2s ease; 
+}
+
+.dropdown-menu li:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu a {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  align-items: center;
+  padding: 14px 20px; 
+  font-size: 14px; 
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+  background-color: rgba(0, 123, 255, 0.1); 
+  color: #007bff; 
+  padding-left: 24px;
+}
+
+.dropdown-menu a::before {
+  content: ''; 
+  margin-right: 10px;
+  font-size: 16px; 
+}
+
+/* Animação de entrada: Fade-in e slide-down suave */
+.dropdown-menu.show {
+  display: block;
+  animation: fadeInDown 0.3s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsivo para mobile: Dropdown mais largo e centralizado */
 @media (max-width: 768px) {
-  .intro {
+  .dropdown-menu {
+    right: 10px;
+    left: 10px; 
+    min-width: auto;
+    max-width: none;
+    top: 50px; 
+  }
+  
+  .menu-btn {
+    font-size: 28px;
+  }
+}
+/* Estilização para o destaque visual da notícia (News Callout) */
+.news-callout-wrapper {
+  width: 90%;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0;
+}
+
+.news-callout {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  background-color: #fce4ec; /* Um rosa claro que remete à conscientização */
+  border: 2px solid #ff4136;
+  border-radius: 12px;
+  padding: 20px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.news-callout:hover {
+  background-color: #f8bbd0; /* Fundo mais escuro ao passar o mouse */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.news-icon-container {
+  font-size: 3em;
+  color: #ff4136; /* Cor de destaque para o ícone */
+  margin-right: 20px;
+  min-width: 60px; /* Garante que o ícone mantenha o espaço */
+  text-align: center;
+}
+
+.news-content-container h4 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: #333;
+  font-weight: 700;
+  font-size: 1.2em;
+}
+
+.news-content-container p {
+  margin-bottom: 5px;
+  color: #555;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+.news-read-more {
+  display: block;
+  color: #880e4f; /* Um tom de roxo/vinho */
+  font-weight: 600;
+  font-size: 0.9em;
+  margin-top: 10px;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 600px) {
+  .news-callout {
       flex-direction: column;
       text-align: center;
   }
+  .news-icon-container {
+      margin-right: 0;
+      margin-bottom: 15px;
+  }
+  .news-content-container {
+      padding: 0 10px;
+  }
+}
+/* Novo estilo para a imagem de quebra de texto */
+.middle-image {
+  margin: 30px 0; /* Espaço acima e abaixo da imagem */
+  text-align: center;
+}
 
-  .intro-content {
-      text-align: center;
+.middle-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px; /* Opcional: para suavizar as bordas */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+/* --- ESTILO PARA O LAYOUT LADO A LADO DO TEXTO E IMAGEM --- */
+
+/* 1. Ativa o Flexbox para colocar os dois conteúdos lado a lado */
+.text-image-block {
+  display: flex;
+  gap: 30px; /* Espaço entre o texto e a imagem */
+  align-items: flex-start; /* Alinha o conteúdo ao topo */
+  margin-bottom: 40px;
+}
+
+/* 2. Define o tamanho das colunas (Texto 2/3, Imagem 1/3) */
+.text-content {
+  flex: 2; 
+  min-width: 50%;
+}
+
+.image-content {
+  flex: 1; 
+  min-width: 30%;
+}
+
+
+/* 3. Garante que a imagem dentro da coluna se ajuste */
+.image-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 4. Regras de Responsividade: Muda para uma coluna em telas pequenas */
+@media (max-width: 768px) {
+  .text-image-block {
+      flex-direction: column; /* Coloca o conteúdo um abaixo do outro */
+      gap: 20px;
   }
 
-  .intro-banner img {
-      height: 180px;
+  .image-content {
+      order: -1; /* Move a imagem para o topo da seção no celular */
+      margin-bottom: 20px;
+      width: 100%; /* Ocupa a largura total */
   }
 }
