@@ -8,34 +8,42 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="./assects/logo.png" type="image/png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"  />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 
 <body>
     <div class="top-bar">
         <div class="social-icons">
-              <a href="https://www.facebook.com/sesisp/?locale=pt_BR"><i class="bi bi-facebook"></i></a>
-              <a href="https://www.instagram.com/sesisp/"><i class="bi bi-instagram"></i></a>
-              <a href="https://www.youtube.com/SesiSaoPauloOficial"><i class="bi bi-youtube"></i></a>
-              <a href="https://br.linkedin.com/company/sesisp"><i class="bi bi-linkedin"></i></a>
-         </div>
-      </div>
-    
-      <!-- Barra inferior -->
-      <div class="bottom-bar">
-        <div class="menu-icon">
-          <i class="bi bi-list"></i>
+            <a href="https://www.facebook.com/sesisp/?locale=pt_BR"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/sesisp/"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.youtube.com/SesiSaoPauloOficial"><i class="bi bi-youtube"></i></a>
+            <a href="https://br.linkedin.com/company/sesisp"><i class="bi bi-linkedin"></i></a>
         </div>
-        
+    </div>
+
+    <!-- Barra inferior -->
+    <div class="bottom-bar">
+        <nav class="menu-bar">
+
+            <button id="menu-toggle" class="menu-btn">☰</button>
+
+            <ul id="menu-dropdown" class="dropdown-menu">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobre.html">Sobre o Projeto</a></li>
+            </ul>
+        </nav>
+
+
         <div class="title">
-          Lojinha da Inconveniência
+            Lojinha da Inconveniência
         </div>
+
         <div class="logo">
             <img src="assects/logo1.png" alt="Logo Juventudes Anti Misoginia">
-          </div>
-      </div>
+        </div>
+    </div>
     </header>
-    
+
     <main>
         <section class="intro">
             <h2>Bem-vindo à Lojinha da Inconveniência</h2>
@@ -47,14 +55,14 @@
                 <img src="assects/image.png" alt="" />
             </div>
         </section>
-    
+
         <section>
             <h2>Produtos</h2>
             <div class="grid" id="productGrid">
             </div>
         </section>
     </main>
-    
+
 
     <!-- Carrinho simplificado -->
     <div class="cart" id="cartBox">
@@ -80,7 +88,7 @@
                     interrompida para te fazer pensar.</li>
                 <li> O consumo consciente é importante, mas a conscientização
                     sobre o machismo é urgente. Obrigada por sua atenção.</li>
-                
+
             </ul>
             <div class="actions">
                 <button class="btn" id="shareSocial">Compartilhar</button>
@@ -99,8 +107,8 @@
                 <div class="col-md-3 mb-4">
                     <h5>Links Rápidos</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-light text-decoration-none">Início</a></li>
-                        
+                        <li><a href="index.html" class="text-light text-decoration-none">Início</a></li>
+                        <li><a href="sobre.html" class="text-light text-decoration-none">Sobre o Projeto</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3 mb-4">
@@ -127,6 +135,50 @@
         </div>
     </footer>
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.getElementById('menu-toggle');
+            const dropdown = document.getElementById('menu-dropdown');
+
+            // Função para posicionar o dropdown corretamente
+            function positionDropdown() {
+                const rect = menuToggle.getBoundingClientRect();
+                const viewportWidth = window.innerWidth;
+                dropdown.style.left = '';
+                dropdown.style.right = '20px';
+
+
+                const dropdownWidth = dropdown.offsetWidth || 200;
+                if (rect.right + dropdownWidth > viewportWidth) {
+                    dropdown.style.right = 'auto';
+                    dropdown.style.left = '20px';
+                }
+            }
+
+            // Toggle do menu ao clicar no botão
+            menuToggle.addEventListener('click', function (event) {
+                event.stopPropagation(); // Impede clique fora imediato
+                dropdown.classList.toggle('show');
+                if (dropdown.classList.contains('show')) {
+
+                    setTimeout(positionDropdown, 10);
+                }
+            });
+
+            document.addEventListener('click', function (event) {
+                if (!menuToggle.contains(event.target) && !dropdown.contains(event.target)) {
+                    dropdown.classList.remove('show');
+                }
+            });
+
+            window.addEventListener('resize', function () {
+                if (dropdown.classList.contains('show')) {
+                    positionDropdown();
+                }
+            });
+
+        });
+
+
         const products = [
             { id: 1, title: "Água", price: 2.9, img: "assects/agua.png" },
             { id: 2, title: "Álcool", price: 19.9, img: "assects/alcool.png" },
@@ -199,7 +251,7 @@
         });
 
         document.getElementById('seeNGOs').addEventListener('click', () => {
-            window.open('/ongs.html', '_blank');
+            window.open('/sobre.html', '_blank');
         });
 
         document.getElementById('closeModal').addEventListener('click', () => {
@@ -225,5 +277,3 @@
 </body>
 
 </html>
-
-
